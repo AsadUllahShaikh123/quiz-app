@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { CircularProgress } from '@mui/material'
+import Questions from './Question';
 
 function Quiz({ name, questions, score, setScore, setQuestions }) {
 
@@ -25,7 +26,17 @@ function Quiz({ name, questions, score, setScore, setQuestions }) {
                         <h1>{questions[currQuestion].category}</h1>
                         <h1>Score : {score}</h1>
                     </div>
+                    <Questions
                     
+                     currQuestion={currQuestion}
+                     setCurrQuestion={setCurrQuestion}
+                     questions={questions}
+                     setQuestions={setQuestions}
+                     score={score}
+                     setScore={setScore}
+                     options={options}
+                     correct = {questions[currQuestion]?.correct_answer}
+                    />
                 </>
 
                 : (<CircularProgress />)}

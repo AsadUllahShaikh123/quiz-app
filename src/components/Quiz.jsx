@@ -21,10 +21,11 @@ function Quiz({ name, questions, score, setScore, setQuestions }) {
             <h1>Welcome {name}</h1>
             {questions ?
                 <> 
-                    <div className="quiz-info">
-                        <p>{questions[currQuestion].category}</p>
-                        <p>{score}</p>
+                    <div className="quiz-info" style={{display:'flex',justifyContent:'space-around'}}>
+                        <h1>{questions[currQuestion].category}</h1>
+                        <h1>Score : {score}</h1>
                     </div>
+                    
                 </>
 
                 : (<CircularProgress />)}

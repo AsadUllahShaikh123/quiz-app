@@ -7,7 +7,7 @@ import { data } from './data';
 
 
 
-let Home = ({ name, setName }) => {
+let Home = ({ name, setName,fetchQuestions }) => {
 
     let history = useHistory();
     let [error, setError] = useState(false);
@@ -21,6 +21,7 @@ let Home = ({ name, setName }) => {
         }
         else {
             setError(false);
+            fetchQuestions(category,level);
             history.push('/quiz');
         }
     }
@@ -53,7 +54,7 @@ let Home = ({ name, setName }) => {
                             style={{ marginBottom: '30px' }}
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}  >
-                            {data.map((cat) => <MenuItem value={cat.value}>
+                            {data.map((cat) => <MenuItem key={cat.value} value={cat.value}>
                                 {cat.category}
                             </MenuItem>)}
                         </TextField>

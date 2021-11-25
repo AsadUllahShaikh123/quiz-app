@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-
+import './question.css'
+import {useHistory} from 'react-router-dom';
+import {Button} from '@mui/material'
 let Questions = ({ currQuestion,
     setCurrQuestion,
     questions,
@@ -8,7 +10,8 @@ let Questions = ({ currQuestion,
     setScore,
     options,
     correct }) => {
-
+    
+    let history = useHistory();
     let [selected, setSelected] = useState();
 
     let [error, setError] = useState(true);
@@ -20,7 +23,7 @@ let Questions = ({ currQuestion,
         else if(selected === option && selected!== correct){
             return "wrong"
         }
-        else if(selected === correct){
+        else if(option === correct){
             return "selected"
         }
     }
@@ -31,19 +34,38 @@ let Questions = ({ currQuestion,
            setScore(score+1);
         setError(false);
     }
+    let handleQuit =()=>{
+        if(currQuestion>8){
+            history.push('/result');
+        }
+        else if(selected){
+            setCurrQuestion(currQuestion+1);
+            setSelected();
+        }
+        else {
+            setError('Please Select any Option !');
+        }
+    }
+    let handleNext=()=>{
+
+    }
     return (
         <>
             <h1>Question : {currQuestion + 1}</h1>
             <h2>{questions[currQuestion].question}</h2>
             <h3>{error && 'Please Select the Option'}</h3>
+            <h4>{correct}</h4>
             {
                 options && 
                 options.map((option)=> <button onClick={()=> handleCheck(option)}
                 disabled={selected}
                 key={option}
-                className={`singleOption ${selected && handleSelect(option)}`}
+                className={`${selected && handleSelect(option)}`}
                 >{option}</button>)
             }
+            <br />
+            <Button href="/" onClick={handleQuit}>Quit</Button>
+            <button>Next Question onClick={handleNext}</button>
         </>
     )
 

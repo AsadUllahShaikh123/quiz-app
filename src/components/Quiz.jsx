@@ -14,7 +14,7 @@ function Quiz({ name, questions, score, setScore, setQuestions }) {
     let handleShuffle = (shufflingOptions) => {
         return shufflingOptions.sort(() => Math.random() - 0.5);
     }
-
+    // console.log(questions[currQuestion]?.category);
 
     return (
 

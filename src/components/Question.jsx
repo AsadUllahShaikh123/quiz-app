@@ -34,7 +34,7 @@ let Questions = ({ currQuestion,
            setScore(score+1);
         setError(false);
     }
-    let handleQuit =()=>{
+    let handleNext =()=>{
         if(currQuestion>8){
             history.push('/result');
         }
@@ -46,13 +46,13 @@ let Questions = ({ currQuestion,
             setError('Please Select any Option !');
         }
     }
-    let handleNext=()=>{
-
+    let handleQuit=()=>{
+        history.push('/result');
     }
     return (
         <>
             <h1>Question : {currQuestion + 1}</h1>
-            <h2>{questions[currQuestion].question}</h2>
+            <h2>{questions[currQuestion]?.question}</h2>
             <h3>{error && 'Please Select the Option'}</h3>
             <h4>{correct}</h4>
             {
@@ -64,8 +64,8 @@ let Questions = ({ currQuestion,
                 >{option}</button>)
             }
             <br />
-            <Button href="/" onClick={handleQuit}>Quit</Button>
-            <button>Next Question onClick={handleNext}</button>
+            <Button onClick={handleQuit}>Quit</Button>
+            <button onClick={handleNext}>Next Question </button>
         </>
     )
 

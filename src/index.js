@@ -4,6 +4,7 @@ import ReactDom from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Quiz from './components/Quiz';
+import Result from './components/Result';
 
 
 let App = () => {
@@ -29,6 +30,10 @@ let App = () => {
 
           <Route exact path="/quiz">
             <Quiz name={name} questions={questions} score ={score} setScore={setScore} setQuestions={setQuestions}/>
+          </Route>
+
+          <Route exact path="/result">
+             <Result name={name} score ={score}/>
           </Route>
 
         </Router>

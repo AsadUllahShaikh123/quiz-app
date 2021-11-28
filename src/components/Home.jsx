@@ -17,7 +17,6 @@ let Home = ({ name, setName, fetchQuestions }) => {
     let handleEvent = () => {
         if (!name || !category || !level) {
             setError(true);
-
         }
         else {
             setError(false);
